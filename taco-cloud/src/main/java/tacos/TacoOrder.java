@@ -1,6 +1,7 @@
 package tacos;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -62,4 +63,12 @@ public class TacoOrder implements Serializable {
   public void addTaco(Taco taco) {
     this.tacos.add(taco);
   }
+
+  public BigDecimal getTotalPrice() {
+    BigDecimal total = BigDecimal.ZERO;
+    for (Taco taco : tacos) {
+        total = total.add(taco.getPrice());
+    }
+    return total;
+}
 }
