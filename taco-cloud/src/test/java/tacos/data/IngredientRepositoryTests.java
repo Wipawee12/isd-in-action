@@ -1,5 +1,6 @@
 package tacos.data;
 
+import java.math.BigDecimal;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.Optional;
@@ -25,7 +26,7 @@ public class IngredientRepositoryTests {
   public void findById() {
     Optional<Ingredient> flto = ingredientRepo.findById("FLTO");
     assertThat(flto.isPresent()).isTrue();
-    assertThat(flto.get()).isEqualTo(new Ingredient("FLTO", "Flour Tortilla", Type.WRAP));
+    assertThat(flto.get()).isEqualTo(new Ingredient("FLTO", "Flour Tortilla", Type.WRAP, new BigDecimal("1.50")));
     
     Optional<Ingredient> xxxx = ingredientRepo.findById("XXXX");
     assertThat(xxxx.isEmpty()).isTrue();
