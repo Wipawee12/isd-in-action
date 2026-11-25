@@ -24,8 +24,8 @@ import tacos.data.IngredientRepository;
 
 @Slf4j
 @Controller
-@RequestMapping("/design")
-@SessionAttributes("tacoOrder")
+@RequestMapping("/design") //request ที่ URL ขึ้นต้นด้วย /design จะมาที่คลาสนี้
+@SessionAttributes("tacoOrder") //ออบเจ็กต์ชื่อ tacoOrder ที่อยู่ใน model จะถูกเก็บลง session ด้วย ทำให้ตอน POST /design ภายหลังยังใช้ order เดิมต่อได้ (ทาโก้ที่เพิ่มไว้ไม่หาย)
 public class DesignTacoController {
 
   private final IngredientRepository ingredientRepo;
@@ -35,7 +35,7 @@ public class DesignTacoController {
     this.ingredientRepo = ingredientRepo;
   }
 
-  @ModelAttribute
+  @ModelAttribute //
   public void addIngredientsToModel(Model model) {
     List<Ingredient> ingredients = new ArrayList<>();
     ingredientRepo.findAll().forEach(i -> ingredients.add(i));
